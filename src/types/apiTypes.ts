@@ -1,22 +1,17 @@
+// types/apiTypes.ts
 export interface Media {
-  type: string;
-  url: string;
-  thumbnail?: string;
+  name: string;
+  resource_type: string;
+  resource_value: string;
+  thumbnail_url?: string;
 }
 
 export interface Checklist {
   text: string;
-}
-
-export interface Seo {
-  title: string;
-  description: string;
-  keywords: string[];
-}
-
-export interface CtaText {
-  primary: string;
-  secondary?: string;
+  icon?: string;
+  color?: string;
+  id?: string;
+  list_page_visibility?: boolean;
 }
 
 export interface Instructor {
@@ -24,13 +19,33 @@ export interface Instructor {
   title: string;
   image: string;
   bio: string;
+  short_description?: string;
+  slug?: string;
+  has_instructor_page?: boolean;
+  description?: string;
+}
+
+export interface Feature {
+  title: string;
+  subtitle: string;
+  icon: string;
+  id?: string;
+}
+
+export interface AboutContent {
+  title: string;
+  description: string;
+  icon?: string;
+  id?: string;
 }
 
 export interface Section {
   type: string;
-  title?: string;
-  items?: any[];
-  content?: string;
+  name?: string;
+  description?: string;
+  bg_color?: string;
+  order_idx?: number;
+  values?: any[]; // Can be more specific based on section type
 }
 
 export interface ProductData {
@@ -40,7 +55,10 @@ export interface ProductData {
   description: string;
   media: Media[];
   checklist: Checklist[];
-  seo: Seo;
-  cta_text: CtaText;
+  cta_text: {
+    name: string;
+    value?: string;
+  };
   sections: Section[];
+  // Add other fields from your API response
 }
